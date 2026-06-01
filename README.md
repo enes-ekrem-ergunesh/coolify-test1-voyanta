@@ -1,6 +1,6 @@
 # Voyanta Travel Agency - Dockerized Deployment
 
-This repository has been fully dockerized to serve this static site using an optimized, high-performance, and secure **Nginx** server. It exposes a standard HTTP port (`8080`) which is ideal for routing behind a reverse proxy (such as Nginx, Caddy, or Traefik).
+This repository has been fully dockerized to serve this static site using an optimized, high-performance, and secure **Nginx** server. It exposes a standard HTTP port (`8541`) which is ideal for routing behind a reverse proxy (such as Nginx, Caddy, or Traefik).
 
 ---
 

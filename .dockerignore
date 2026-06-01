@@ -1,0 +1,12 @@
+# Version control
+.git
+.gitignore
+
+# Docker config
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Documentation and temporary files
+README.md
+*.log

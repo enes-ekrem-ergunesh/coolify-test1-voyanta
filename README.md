@@ -11,9 +11,10 @@ The containerized setup includes:
 2. **`default.conf`**: Custom Nginx server block optimized for static file delivery. Features:
    * **Gzip Compression**: Automatically compresses CSS, JavaScript, and HTML on the fly.
    * **Security Headers**: Includes robust protection (`X-Frame-Options`, `X-Content-Type-Options`, and `Referrer-Policy`).
+   * **Health Endpoint**: Exposes `/health` for container and platform probes.
    * **Aggressive Static Caching**: Sets a `1y` cache-control header for styling assets, scripts, and media files to boost page performance.
    * **Automatic Directory Indexing**: Safely routes both standard paths and subdirectories (like `/admin/`).
-3. **`docker-compose.yml`**: Simplifies the orchestration, exposing the container on port `8080`.
+3. **`docker-compose.yml`**: Simplifies orchestration and adds a Docker healthcheck against `/health`.
 4. **`.dockerignore`**: Excludes development assets like `.git`, `Dockerfile`, and composition configurations to keep the production image tiny and secure.
 
 ---
@@ -121,6 +122,12 @@ If you use Apache (`httpd`), ensure `mod_proxy` and `mod_proxy_http` are enabled
 
 Verify that the site is active by sending a curl request locally:
 ```bash
-curl -I http://localhost:8080
+curl -I http://localhost:8541
 ```
-This should return `HTTP/1.1 200 OK` with server type `nginx/1.26.3`.
+This should return `HTTP/1.1 200 OK` with server type `nginx`.
+
+Verify the health endpoint:
+```bash
+curl -fsS http://localhost:8541/health
+```
+This should return `ok`.

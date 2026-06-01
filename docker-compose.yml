@@ -3,5 +3,5 @@ services:
     build: .
     container_name: voyanta-web
     ports:
-      - "8080:80"
+      - "8541:80"
     restart: unless-stopped
